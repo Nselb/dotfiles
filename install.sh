@@ -139,6 +139,20 @@ git config --global pull.rebase false
 echo -e "${GREEN}✅ Git configurado${NC}"
 echo ""
 
+# ── Estructura de carpetas ────────────────────────────────
+echo -e "${BLUE}📁 Creando estructura de carpetas...${NC}"
+echo ""
+
+mkdir -p ~/dev/personal
+mkdir -p ~/dev/work
+mkdir -p ~/Media/Music
+mkdir -p ~/Media/Pictures
+mkdir -p ~/Media/Wallpapers
+mkdir -p ~/Documents
+
+echo -e "${GREEN}✅ Carpetas creadas${NC}"
+echo ""
+
 # ── SSH Key ───────────────────────────────────────────────
 echo -e "${BLUE}🔑 Generando SSH key...${NC}"
 echo ""
@@ -151,7 +165,7 @@ if [ -f "$SSH_KEY" ]; then
   echo -e "${YELLOW}⚠️  Ya existe una SSH key, saltando...${NC}"
 else
   ssh-keygen -t ed25519 -C "$git_email" -f "$SSH_KEY" -N ""
-  eval "$(ssh-agent -s)"
+  eval (ssh-agent -c)
   ssh-add "$SSH_KEY"
   echo -e "${GREEN}✅ SSH key generada${NC}"
 fi
