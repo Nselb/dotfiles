@@ -6,6 +6,8 @@
     padding = 12
     horizontal_padding = 14
     gap_size = 6
+    monitor = DP-1
+    follow = none
 
     stack_duplicates = false
 

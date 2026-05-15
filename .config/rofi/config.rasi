@@ -1,6 +1,8 @@
 configuration {
   modes: "window,drun,run,ssh";
   drun-display-format: "{name}";
+  drun-show-actions: false;
+  drun-url-launcher: "xdg-open";
   timeout {
       action: "kb-cancel";
       delay:  0;
@@ -10,5 +12,4 @@ configuration {
       sorting-method:    "name";
   }
 }
-
 @theme "theme.rasi"
