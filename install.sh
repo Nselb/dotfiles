@@ -40,6 +40,7 @@ packages=(
   noto-fonts-emoji
   git
   openssh
+  sddm
 )
 
 aur_packages=(
@@ -197,6 +198,41 @@ if [ "$SHELL" != "$(which fish)" ]; then
   echo -e "${YELLOW}🐟 Cambiando shell a fish...${NC}"
   chsh -s "$(which fish)"
 fi
+
+# ── SDDM ─────────────────────────────────────────────────
+echo -e "${BLUE}🎨 Configurando SDDM...${NC}"
+echo ""
+
+sudo systemctl enable sddm
+
+# Tema catppuccin para SDDM
+yay -S --needed --noconfirm sddm-catppuccin-frappe-git
+
+sudo mkdir -p /etc/sddm.conf.d
+cat << 'EOF' | sudo tee /etc/sddm.conf.d/theme.conf
+[Theme]
+Current=catppuccin-frappe
+EOF
+
+echo -e "${GREEN}✅ SDDM configurado${NC}"
+echo ""
+
+# ── GRUB ─────────────────────────────────────────────────
+echo -e "${BLUE}🎨 Configurando GRUB...${NC}"
+echo ""
+
+yay -S --needed --noconfirm catppuccin-frappe-grub-theme-git
+
+sudo mkdir -p /boot/grub/themes
+sudo cp -r /usr/share/grub/themes/catppuccin-frappe /boot/grub/themes/
+
+# Agrega el tema al grub
+sudo sed -i 's|#GRUB_THEME=.*|GRUB_THEME="/boot/grub/themes/catppuccin-frappe/theme.txt"|' /etc/default/grub
+
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+echo -e "${GREEN}✅ GRUB configurado${NC}"
+echo ""
 
 echo ""
 echo -e "${GREEN}╔════════════════════════════════════════════╗${NC}"
