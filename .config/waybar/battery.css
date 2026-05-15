@@ -1,0 +1,114 @@
+#battery {
+  background-color: alpha(@surface1, 0.8);
+  border-radius: 25px;
+  padding: 0 10px;
+  min-height: 0;
+  margin: 8px 5px;
+  font-size: 10px;
+  color: @crust;
+}
+
+/* 100% */
+#battery.full {
+  background: linear-gradient(to right, @teal 100%, alpha(@teal, 0.3) 100%);
+}
+
+/* 90% */
+#battery.ninty {
+  background: linear-gradient(to right, @teal 90%, alpha(@teal, 0.3) 90%);
+}
+
+/* 80% */
+#battery.eighty {
+  background: linear-gradient(to right, @green 80%, alpha(@green, 0.3) 80%);
+}
+
+/* 70% */
+#battery.seventy {
+  background: linear-gradient(to right, @green 70%, alpha(@green, 0.3) 70%);
+}
+
+/* 60% */
+#battery.sixty {
+  background: linear-gradient(to right, @yellow 60%, alpha(@yellow, 0.3) 60%);
+}
+
+/* 50% */
+#battery.fifty {
+  background: linear-gradient(to right, @yellow 50%, alpha(@yellow, 0.3) 50%);
+}
+
+/* 40% */
+#battery.forty {
+  background: linear-gradient(to right, @peach 40%, alpha(@peach, 0.3) 40%);
+}
+
+/* 30% */
+#battery.thirty {
+  background: linear-gradient(to right, @peach 30%, alpha(@peach, 0.3) 30%);
+}
+
+/* 20% */
+#battery.twenty {
+  background: linear-gradient(to right, @red 20%, alpha(@red, 0.3) 20%);
+}
+
+/* 10% */
+#battery.ten {
+  background: linear-gradient(to right, @red 10%, alpha(@red, 0.3) 10%);
+}
+
+/* 5% crítico con animación */
+#battery.critical {
+  animation: blink 1s ease-in-out alternate infinite;
+}
+
+#waybar.battery-critical > box {
+  animation: blink-waybar 2s linear alternate infinite;
+}
+
+/* Charging */
+#battery.charging {
+  background:
+    linear-gradient(to right, @green 100%, alpha(@green, 0.2) 100%) left/0% 100%
+      no-repeat,
+    linear-gradient(to right, alpha(@green, 0.2) 100%) left/100% 100% no-repeat;
+  animation: charging 5s linear infinite;
+}
+
+@keyframes charging {
+  from {
+    background-size:
+      0% 100%,
+      100% 100%;
+  }
+  to {
+    background-size:
+      100% 100%,
+      100% 100%;
+  }
+}
+
+@keyframes blink {
+  from {
+    background: linear-gradient(to right, @red 5%, alpha(@red, 0.2) 5%);
+    color: @crust;
+    opacity: 1;
+  }
+  to {
+    background-color: @surface1;
+    color: @text;
+    opacity: 0.5;
+  }
+}
+
+@keyframes blink-waybar {
+  from {
+    background: @red;
+    opacity: 1;
+  }
+  to {
+    background: @surface1;
+    opacity: 0.5;
+  }
+}

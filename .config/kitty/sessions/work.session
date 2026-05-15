@@ -1,0 +1,22 @@
+# ~/.config/kitty/sessions/work.session
+# Lanzar con: kitty --session ~/.config/kitty/sessions/work.session
+
+# ─── TAB: backend ────────────────────────────────────────────────────────────
+new_tab hoy
+layout fat
+launch --location=first /usr/bin/fish -c "hoy; fish"
+
+new_tab backend
+layout splits
+
+launch --location=first /usr/bin/fish
+launch --location=vsplit --bias=30 /usr/bin/fish
+launch --location=hsplit /usr/bin/fish
+
+# ─── TAB: frontend ───────────────────────────────────────────────────────────
+new_tab frontend
+layout splits
+
+launch --location=first /usr/bin/fish
+launch --location=vsplit --bias=30 /usr/bin/fish
+launch --location=hsplit /usr/bin/fish

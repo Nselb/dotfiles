@@ -1,0 +1,19 @@
+#bluetooth {
+  font-size: 20px;
+}
+
+#bluetooth.disabled {
+  color: @red;
+}
+
+#bluetooth.off {
+  color: @red;
+}
+
+#bluetooth.no-controller {
+  color: @red;
+}
+
+#bluetooth.on {
+  color: @blue;
+}

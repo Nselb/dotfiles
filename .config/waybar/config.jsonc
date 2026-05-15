@@ -1,0 +1,59 @@
+{
+  "layer": "top",
+  "spacing": 0,
+  "reload_style_on_change": true,
+  "modules-left": ["custom/nselb", "hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["wireplumber", "network", "bluetooth", "battery"],
+  "hyprland/workspaces": {
+    "persistent-workspaces": {
+      "*": 5,
+    },
+  },
+  "battery": {
+    "format": "{capacity}",
+    "format-time": "{H}:{m}",
+    "states": {
+      "full": 100,
+      "ninty": 90,
+      "eighty": 80,
+      "seventy": 70,
+      "sixty": 60,
+      "fifty": 50,
+      "forty": 40,
+      "thirty": 30,
+      "twenty": 20,
+      "ten": 10,
+      "critical": 5,
+    },
+  },
+  "clock": {
+    "format": "{:%a, %d %b. %H:%M}",
+    "format-alt": "{:%H:%M}",
+  },
+  "custom/nselb": {
+    "format": " ",
+    "tooltip": false,
+  },
+  "network": {
+    "format-ethernet": "󰈀 ",
+    "format-wifi": "{icon}",
+    "format-disconnected": "󰤭 ",
+    "format-icons": ["󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
+    "tooltip-format-wifi": "Name: {essid}\nBand: {frequency} GHz\nIP: {ipaddr}/{cidr}",
+    "interval": 5,
+    "on-click": "nm-applet",
+  },
+  "bluetooth": {
+    "format": "󰂯",
+    "format-off": "󰂲",
+    "format-connected": "󰂱 {device_alias}",
+    "on-click": "blueman-manager",
+  },
+  "wireplumber": {
+    "format": "{icon} {volume}% {icon}",
+    "format-muted": "",
+    "on-click": "helvum",
+    "format-icons": ["", " ", " "],
+  },
+}

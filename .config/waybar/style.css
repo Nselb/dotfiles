@@ -1,0 +1,36 @@
+@import "colors.css";
+@import "hyprland-workspaces.css";
+@import "hyprland-windows.css";
+@import "icon.css";
+@import "battery.css";
+@import "wifi.css";
+@import "bluetooth.css";
+
+* {
+  all: unset;
+  font-family: "JetBrainsMono Nerd Font", "sans-serif";
+  font-size: 14px;
+}
+
+window#waybar {
+  background-color: transparent;
+}
+
+window#waybar > box {
+  background-color: alpha(@surface0, 0.75);
+  margin: 5px 20px 0;
+  padding: 5px 25px;
+  border-radius: 10px;
+}
+
+tooltip {
+  background: #1e1e2e;
+  border: 1px solid rgba(137, 180, 250, 0.2);
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+
+tooltip label {
+  color: #cdd6f4;
+  font-size: 12px;
+}

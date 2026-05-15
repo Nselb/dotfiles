@@ -1,0 +1,97 @@
+@theme "catppuccin-theme.rasi"
+
+* {
+    font: "JetBrains Nerd Font 14";
+    background-color:            transparent;
+    spacing:                     0;
+
+    /* ── Base ── */
+    background:                  var(base);
+    foreground:                  var(text);
+    border-color:                var(mauve);
+    separatorcolor:              var(surface2);
+    lightbg:                     var(surface0);
+    lightfg:                     var(overlay2);
+
+    /* ── Normal ── */
+    normal-background:           var(background);
+    normal-foreground:           var(foreground);
+    alternate-normal-background: var(mantle);
+    alternate-normal-foreground: var(foreground);
+    selected-normal-background:  var(mauve);
+    selected-normal-foreground:  var(crust);
+
+    /* ── Active ── */
+    active-background:           var(background);
+    active-foreground:           var(blue);
+    alternate-active-background: var(mantle);
+    alternate-active-foreground: var(blue);
+    selected-active-background:  var(blue);
+    selected-active-foreground:  var(crust);
+
+    /* ── Urgent ── */
+    urgent-background:           var(background);
+    urgent-foreground:           var(red);
+    alternate-urgent-background: var(mantle); alternate-urgent-foreground: var(red); selected-urgent-background:  var(red);
+    selected-urgent-foreground:  var(crust);
+}
+
+window {
+  height: 50%;
+  background-color: var(background);
+  border-radius: 25;
+  padding: 20;
+}
+
+inputbar {
+  background-color: rgba(0,0,0,10%);
+  border-radius: 25;
+  padding: 10 20;
+  spacing: 20;
+  vertical-align: 0.5;
+  border: 1px solid;
+}
+
+prompt {
+    color: var(text);
+}
+
+entry {
+  color: var(text);
+  placeholder: 'Buscar';
+}
+
+listview {
+  padding: 10;
+  flow: horizontal;
+  dynamic: true;
+  columns: 4;
+  spacing: 10px;
+}
+
+element {
+  orientation: vertical;
+  padding: 15;
+  border-radius:10;
+  children: [element-icon, element-text];
+}
+
+element selected {
+    background-color: var(lavender);
+    color: var(crust);
+}
+
+element-text selected {
+  color: var(crust);
+}
+
+element-icon {
+  size: 48;
+  horizontal-align: 0.5;
+}
+
+element-text {
+  font: "JetBrains Nerd Font 10";
+  horizontal-align: 0.5;
+  color: var(text);
+}

@@ -1,0 +1,68 @@
+[global]
+    origin = bottom-center
+    offset = (10, 50)
+    width = 350
+    height = (0, 300)
+    padding = 12
+    horizontal_padding = 14
+    gap_size = 6
+
+    stack_duplicates = false
+
+    font = JetBrains Mono 11
+    markup = full
+    format = "<b>%s</b>\n%b"
+
+    frame_width = 2
+    corner_radius = 10
+    separator_height = 2
+
+    timeout = 5
+    stack_duplicates = true
+    hide_duplicate_count = false
+
+    mouse_left_click = close_current
+    mouse_right_click = do_action
+    mouse_middle_click = close_all
+
+    progress_bar = true
+    progress_bar_height = 8
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 300
+    progress_bar_max_width = 300
+    progress_bar_corner_radius = 4
+
+[urgency_low]
+    background  = "#303446"   # Base
+    foreground  = "#c6d0f5"   # Text
+    frame_color = "#414559"   # Surface0
+    timeout = 3
+
+[urgency_normal]
+    background  = "#303446"   # Base
+    foreground  = "#c6d0f5"   # Text
+    frame_color = "#8caaee"   # Blue
+    timeout = 5
+
+[urgency_critical]
+    background  = "#303446"   # Base
+    foreground  = "#e78284"   # Red
+    frame_color = "#e78284"   # Red
+    timeout = 0
+
+[cider]
+    appname = "Cider"
+    frame_color = "#cba6f7"
+    timeout = 2
+
+[volume]
+    appname = "dunst-volume"
+    stack_tag = "volume"
+    frame_color = "#a6d189"
+    timeout = 2
+
+[brightness]
+    appname = "dunst-brightness"
+    stack_tag = "brightness"
+    frame_color = "#e5c890"
+    timeout = 2
