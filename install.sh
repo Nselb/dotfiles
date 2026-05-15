@@ -51,6 +51,7 @@ echo ""
 
 # pacman
 echo -e "${YELLOW}→ pacman${NC}"
+sudo pacman -Syu --noconfirm
 sudo pacman -S --needed --noconfirm "${packages[@]}"
 
 # yay
@@ -154,6 +155,20 @@ else
   ssh-add "$SSH_KEY"
   echo -e "${GREEN}✅ SSH key generada${NC}"
 fi
+
+# ── Ocultar apps innecesarias ─────────────────────────────
+echo -e "${BLUE}🧹 Ocultando apps innecesarias...${NC}"
+echo ""
+
+mkdir -p ~/.local/share/applications
+
+for app in avahi-discover bssh bvnc qv4l2 qvidcap xgps xgpsspeed rofi-theme-selector; do
+  printf "[Desktop Entry]\nType=Application\nName=%s\nNoDisplay=true\n" "$app" >~/.local/share/applications/$app.desktop
+done
+
+update-desktop-database ~/.local/share/applications
+echo -e "${GREEN}✅ Apps ocultas${NC}"
+echo ""
 
 echo ""
 echo -e "${YELLOW}📋 Agrega esta key a GitHub → Settings → SSH Keys:${NC}"
