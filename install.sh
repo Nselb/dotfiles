@@ -29,7 +29,6 @@ packages=(
   pipewire
   pipewire-pulse
   wireplumber
-  wpctl
   brightnessctl
   playerctl
   btop
@@ -166,7 +165,7 @@ if [ -f "$SSH_KEY" ]; then
   echo -e "${YELLOW}⚠️  Ya existe una SSH key, saltando...${NC}"
 else
   ssh-keygen -t ed25519 -C "$git_email" -f "$SSH_KEY" -N ""
-  eval (ssh-agent -c)
+  eval "$(ssh-agent -s)"
   ssh-add "$SSH_KEY"
   echo -e "${GREEN}✅ SSH key generada${NC}"
 fi
@@ -209,7 +208,7 @@ sudo systemctl enable sddm
 yay -S --needed --noconfirm sddm-catppuccin-frappe-git
 
 sudo mkdir -p /etc/sddm.conf.d
-cat << 'EOF' | sudo tee /etc/sddm.conf.d/theme.conf
+cat <<'EOF' | sudo tee /etc/sddm.conf.d/theme.conf
 [Theme]
 Current=catppuccin-frappe
 EOF
@@ -228,6 +227,11 @@ sudo cp -r /usr/share/grub/themes/catppuccin-frappe /boot/grub/themes/
 
 # Agrega el tema al grub
 sudo sed -i 's|#GRUB_THEME=.*|GRUB_THEME="/boot/grub/themes/catppuccin-frappe/theme.txt"|' /etc/default/grub
+# Habilitar os-prober para detectar Windows
+sudo pacman -S --needed --noconfirm os-prober
+sudo sed -i 's|#GRUB_DISABLE_OS_PROBER=.*|GRUB_DISABLE_OS_PROBER=false|' /etc/default/grub
+# Si no existe la línea, agregarla
+grep -q "GRUB_DISABLE_OS_PROBER" /etc/default/grub || echo "GRUB_DISABLE_OS_PROBER=false" | sudo tee -a /etc/default/grub
 
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
