@@ -31,3 +31,4 @@ alias aprendi="zk aprendi"
 alias proy="zk proy"
 alias buscar="zk buscar"
 set -x ZK_NOTEBOOK_DIR ~/notas
+zoxide init fish | source
